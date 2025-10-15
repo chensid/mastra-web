@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
   const [msg, setMsg] = useState<string>("");
@@ -71,6 +73,7 @@ function App() {
           </form>
         </div>
       </div>
+      <SpeedInsights />
     </>
   );
 }
