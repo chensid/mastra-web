@@ -28,7 +28,7 @@ function App() {
 
   const { messages, status, sendMessage } = useChat({
     transport: new DefaultChatTransport({
-      api: `${import.meta.env.VITE_MASTRA_API_URL}/chat/weatherAgent`,
+      api: `${import.meta.env.VITE_MASTRA_API_URL}/api/chat/weatherAgent`,
     }),
   });
 
