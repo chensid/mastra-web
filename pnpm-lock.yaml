@@ -23,6 +23,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.14
         version: 4.1.14(rolldown-vite@7.1.17(@types/node@24.7.2)(jiti@2.6.1))
+      '@vercel/speed-insights':
+        specifier: ^1.2.0
+        version: 1.2.0(react@19.2.0)
       ai:
         specifier: ^5.0.71
         version: 5.0.71(zod@4.1.12)
@@ -1314,6 +1317,29 @@ packages:
   '@vercel/oidc@3.0.2':
     resolution: {integrity: sha512-JekxQ0RApo4gS4un/iMGsIL1/k4KUBe3HmnGcDvzHuFBdQdudEJgTqcsJC7y6Ul4Yw5CeykgvQbX2XeEJd0+DA==}
     engines: {node: '>= 20'}
+
+  '@vercel/speed-insights@1.2.0':
+    resolution: {integrity: sha512-y9GVzrUJ2xmgtQlzFP2KhVRoCglwfRQgjyfY607aU0hh0Un6d0OUyrJkjuAlsV18qR4zfoFPs/BiIj9YDS6Wzw==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vitejs/plugin-react@5.0.4':
     resolution: {integrity: sha512-La0KD0vGkVkSk6K+piWDKRUyg8Rl5iAIKRMH0vMJI0Eg47bq1eOxmoObAaQG37WMW9MSyk7Cs8EIWwJC1PtzKA==}
@@ -4414,6 +4440,10 @@ snapshots:
       eslint-visitor-keys: 4.2.1
 
   '@vercel/oidc@3.0.2': {}
+
+  '@vercel/speed-insights@1.2.0(react@19.2.0)':
+    optionalDependencies:
+      react: 19.2.0
 
   '@vitejs/plugin-react@5.0.4(rolldown-vite@7.1.17(@types/node@24.7.2)(jiti@2.6.1))':
     dependencies:
