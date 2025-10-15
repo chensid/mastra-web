@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { mastraClient } from "@/lib/mastra-client";
 import { useState } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 
 function App() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,6 +25,19 @@ function App() {
     setLoading(false);
   };
 
+  const { messages, status, sendMessage } = useChat({
+    transport: new DefaultChatTransport({
+      api: `${import.meta.env.VITE_MASTRA_API_URL}/chat/weatherAgent`,
+    }),
+  });
+
+  const [input, setInput] = useState("");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    sendMessage({ text: input });
+    setInput("");
+  };
+
   return (
     <>
       <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
@@ -32,6 +47,28 @@ function App() {
             Test Agent
           </Button>
           <pre>{msg}</pre>
+          <Button onClick={() => sendMessage({ text: "深圳天气" })}>
+            Test AI SDK
+          </Button>
+          {messages.map((message) => (
+            <div key={message.id}>
+              <strong>{`${message.role}: `}</strong>
+              {message.parts.map((part, index) => {
+                switch (part.type) {
+                  case "text":
+                    return <div key={index}>{part.text}</div>;
+                }
+              })}
+            </div>
+          ))}
+
+          <form onSubmit={handleSubmit}>
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              disabled={status !== "ready"}
+            />
+          </form>
         </div>
       </div>
     </>
